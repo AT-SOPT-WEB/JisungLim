@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onClick="onClick()">리스트 추가하기</button>
+    <ul id="ul"></ul>
+  </body>
+  
+  <script>
+    // DOM을 3000번 조작
+    // const onClick = () => {
+    //   const ul = document.getElementById('ul');
+
+    //   for (let i = 0; i < 3000; i++) {
+    //     ul.innerHTML += <li>${i}</li>;
+    //   }
+    // };
+    
+    // DOM 조작 최소화(list변수에 넣어두고, 마지막 한 번만 DOM에 직접 접근)
+     const onClick = () => {
+       const ul = document.getElementById('ul');
+       let list = '';
+
+       for (let i = 0; i < 3000; i++) {
+         list += `<li>${i}</li>`;
+       }
+
+       ul.innerHTML = list;
+    };
+  </script>
+</html>
