@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <link rel="stylesheet" href="style.css"/>
     <meta charset="UTF-8">
@@ -7,14 +7,14 @@
     <title>임지성 블로그</title>
 </head>
 <body>
-    <div id="wrapper">
+    <div>
         <header>
             <div class="icon-left">
                 <button type="button">
                     <img src="images/home.png" alt="home">
                 </button>
             </div>
-            <h2 class="title">지성 블로그</h2>
+            <h1 class="title">지성 블로그</h1>
             <div class="icon-right">
                 <button type="button">
                     <img src="images/menu.png" alt="menu">
@@ -22,15 +22,15 @@
             </div>
         </header>
 
-        <body>
+        <div id="main-content">
             <!-- navigator -->
             <nav>
                 <div class="category-label">분류</div>
-                <div class="category-buttons">
-                    <a href="#all" class="category-button">전체</a>
-                    <a href="#daily" class="category-button">일상</a>
-                    <a href="#dev" class="category-button">개발</a>
-                </div>
+                <ul class="category-buttons">
+                    <li><a href="#all" class="category-button first-btn">전체</a></li>
+                    <li><a href="#daily" class="category-button">일상</a></li>
+                    <li><a href="#dev" class="category-button last-btn">개발</a></li>
+                </ul>
             </nav>
 
             <main>
@@ -213,11 +213,11 @@
                       </div>
                 </section>
             </main>
-        </body>
+        </div>
 
         <footer>
-            <div>6기 AT SOPT WEB 1주차 과제</div>
-            <div>파이팅!</div>
+            <p>6기 AT SOPT WEB 1주차 과제</p>
+            <p>파이팅!</p>
         </footer>
     </div>
 </body>
