@@ -1,4 +1,4 @@
-export const todos = [
+export const todoData = [
     {
       id: 1,
       title: '과제하기',

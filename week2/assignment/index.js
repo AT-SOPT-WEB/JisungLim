@@ -1,3 +1,4 @@
+import { todoData } from "./todoData.js"
 const STORAGE_KEY_TODOLIST = "todoList";
 const STORAGE_KEY_LISTID = "listId";
 const filterButtons = document.querySelectorAll(".filter");
@@ -11,13 +12,8 @@ const tableBody = document.querySelector(".table-body");
 const modal = document.querySelector(".modal");
 const closeModalButton = document.querySelector(".closeModal-button");
 const checkedIdSet = new Set(); // 체크한 체크박스의 listId값 저장
-const todoList = JSON.parse(localStorage.getItem(STORAGE_KEY_TODOLIST)) || [];
-// localStorage: 모든 데이터 문자열로 저장
-// JSON.parse: 저장된 문자열을 객체/배열로 바꿔줌
 
-todoList.forEach((todoList, idx) => {
-    createTable(todoList);
-})
+const todoList = initializeTodoList();
 
 // event listener 추가
 filterButtons.forEach((button) => {
@@ -32,9 +28,27 @@ deleteButton.addEventListener("click", deleteTask);
 closeModalButton.addEventListener("click", closeModal);
 selectAllButton.addEventListener("click", selectAllCheckbox);
 
+function initializeTodoList() {
+    let todoList = JSON.parse(localStorage.getItem(STORAGE_KEY_TODOLIST));
+    // localStorage: 모든 데이터 문자열로 저장
+    // JSON.parse: 저장된 문자열을 객체/배열로 바꿔줌
+
+    // localStorage에 데이터가 없거나 비어있으면 초기 데이터(todoData)로 세팅
+    if (!todoList || todoList.length === 0) {
+        todoList = [...todoData];
+        localStorage.setItem(STORAGE_KEY_TODOLIST, JSON.stringify(todoList));
+        localStorage.setItem(STORAGE_KEY_LISTID, todoList.length + 1);
+    }
+
+    todoList.forEach((todo) => {
+        createTable(todo);
+    });
+
+    return todoList;
+}
+
 // 테이블 row 생성 메서드
-function createTable(todo) {
-    // todo: {id, title, complete, priority}
+function createTable(todo) { // todo: {id, title, complete, priority}
     const tr = document.createElement("tr");
 
     const checkboxTd = document.createElement("td");
