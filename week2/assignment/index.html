@@ -28,8 +28,8 @@
             </section>
 
             <section class="todo-modify">
-                <button type="button" class="todo-button">삭제</button>
-                <button type="button" class="todo-button">완료</button>
+                <button type="button" class="todo-button delete-button">삭제</button>
+                <button type="button" class="todo-button complete-button">완료</button>
             </section>
 
             <section class="todo-table">
@@ -53,6 +53,12 @@
                 </table>
             </section>
         </main>
+    </div>
+    <div class="modal hidden">
+        <div class="modal-box">
+            <p>이미 완료된 todo입니다.</p>
+            <button type="button" class="todo-button closeModal-button">닫기</button>
+        </div>
     </div>
     <script type="module" src="index.js"></script>
 </body>
