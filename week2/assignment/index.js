@@ -15,7 +15,6 @@ const todoList = JSON.parse(localStorage.getItem(STORAGE_KEY_TODOLIST)) || [];
 // localStorage: 모든 데이터 문자열로 저장
 // JSON.parse: 저장된 문자열을 객체/배열로 바꿔줌
 
-// 렌더링 시 local storage의 데이터 가져옴
 todoList.forEach((todoList, idx) => {
     createTable(todoList);
 })
