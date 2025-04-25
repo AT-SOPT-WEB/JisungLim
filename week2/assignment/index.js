@@ -6,7 +6,8 @@ const todoPriority = document.querySelector(".todo-priority");
 const addTodoButton = document.querySelector(".addTodo-button");
 const completeButton = document.querySelector(".complete-button");
 const deleteButton = document.querySelector(".delete-button");
-const tableBody = document.querySelector(".table-body")
+const selectAllButton = document.querySelector(".select-all");
+const tableBody = document.querySelector(".table-body");
 const modal = document.querySelector(".modal");
 const closeModalButton = document.querySelector(".closeModal-button");
 const checkedIdSet = new Set(); // 체크한 체크박스의 listId값 저장
@@ -14,10 +15,12 @@ const todoList = JSON.parse(localStorage.getItem(STORAGE_KEY_TODOLIST)) || [];
 // localStorage: 모든 데이터 문자열로 저장
 // JSON.parse: 저장된 문자열을 객체/배열로 바꿔줌
 
+// 렌더링 시 local storage의 데이터 가져옴
 todoList.forEach((todoList, idx) => {
     createTable(todoList);
 })
 
+// event listener 추가
 filterButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         const filterType = e.target.dataset.filter;
@@ -28,7 +31,9 @@ addTodoButton.addEventListener("click", addTodo); // hoisting(o)
 completeButton.addEventListener("click", completeTask);
 deleteButton.addEventListener("click", deleteTask);
 closeModalButton.addEventListener("click", closeModal);
+selectAllButton.addEventListener("click", selectAllCheckbox);
 
+// 테이블 row 생성 메서드
 function createTable(todo) {
     // todo: {id, title, complete, priority}
     const tr = document.createElement("tr");
@@ -57,6 +62,24 @@ function createTable(todo) {
     tableBody.append(tr);
 }
 
+// 모든 checkbox 선택
+function selectAllCheckbox() {
+    const allCheckboxes = tableBody.querySelectorAll("input[type=checkbox");
+
+    if (selectAllButton.checked) {
+        allCheckboxes.forEach(checkbox => {
+            checkbox.checked = true;
+            checkedIdSet.add(checkbox.dataset.id);
+        })
+    } else {
+        allCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            checkedIdSet.delete(checkbox.dataset.id);
+        });
+    }
+}
+
+// todo list 필터링
 function filterTodoList(selectedFilter) {
     let filteredList = [];
 
