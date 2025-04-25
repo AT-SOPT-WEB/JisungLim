@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>2주차 과제</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="todo-filter">
+            <button type="button" class="todo-button">전체</button>
+            <button type="button" class="todo-button">완료됨</button>
+            <button type="button" class="todo-button">미완료</button>
+            <button type="button" class="todo-button">중요도</button>
+        </div>
+
+        <main class="main">
+            <section class="todo-create">
+                <input type="text" class="todo-input" placeholder="할 일을 입력하세요." />
+                <select name="todo-priority" id="todo-priority" class="todo-priority">
+                    <option value="" disabled selected>중요도 선택</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <button type="button" class="todo-button addTodo-button">추가</button>
+            </section>
+
+            <section class="todo-modify">
+                <button type="button" class="todo-button">삭제</button>
+                <button type="button" class="todo-button">완료</button>
+            </section>
+
+            <section class="todo-table">
+                <table>
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 55%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>V</th>
+                            <th>중요도</th>
+                            <th>완료됨</th>
+                            <th>할 일</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
