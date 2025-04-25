@@ -9,10 +9,10 @@
 <body>
     <div class="wrapper">
         <div class="todo-filter">
-            <button type="button" class="todo-button">전체</button>
-            <button type="button" class="todo-button">완료됨</button>
-            <button type="button" class="todo-button">미완료</button>
-            <button type="button" class="todo-button">중요도</button>
+            <button type="button" class="todo-button filter" data-filter="all">전체</button>
+            <button type="button" class="todo-button filter" data-filter="complete">완료됨</button>
+            <button type="button" class="todo-button filter" data-filter="incomplete">미완료</button>
+            <button type="button" class="todo-button">중요도 ▼</button>
         </div>
 
         <main class="main">
@@ -42,7 +42,9 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>V</th>
+                            <th>
+                                <input type="checkbox">
+                            </th>
                             <th>중요도</th>
                             <th>완료됨</th>
                             <th>할 일</th>
