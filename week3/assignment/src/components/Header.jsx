@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { BASEBALL, GITHUB } from "../js/constants";
+import { BASEBALL, GITHUB } from "../constants";
 
 const Header = ({ selectedMode, onModeChange }) => {
   return (

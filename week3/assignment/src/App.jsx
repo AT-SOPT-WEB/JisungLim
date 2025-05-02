@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import GlobalStyles from "./styles/GlobalStyles";
 import styled from "@emotion/styled";
 import Header from "./components/header";
-import { BASEBALL, GITHUB, PROFILE } from "./js/constants";
+import { BASEBALL, GITHUB, PROFILE } from "./constants";
 import StyledInput from "./components/StyledInput";
 import GithubSearchResult from "./components/GithubSearchResult";
 import RecentSearch from "./components/RecentSearch";
@@ -14,7 +14,7 @@ function App() {
   // 숫자야구 기능
   const [baseballResult, setBaseballResult] = useState([]);
   const [answer, setAnswer] = useState(0); // 생성된 랜덤 숫자 저장
-  const [baseballMessage, setBaseballMessage] = useState(""); 
+  const [baseballMessage, setBaseballMessage] = useState("");
 
   // 깃허브 기능
   const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
@@ -93,7 +93,7 @@ function App() {
     const isThreeDigits = /^\d{3}$/.test(userInput);
     const noDuplicates = new Set(userInput).size === userInput.length; // O(n)
     return isThreeDigits && noDuplicates;
-  }
+  };
 
   const handleKeyDown = (e) => {
     // handleKeyDown이 onKeyDown이라는 React 이벤트 핸들러에 연결됐으므로
@@ -194,7 +194,10 @@ function App() {
           />
         )}
         {selectedMode === BASEBALL && (
-          <BaseballResult baseballResult={baseballResult} baseballMessage={baseballMessage}/>
+          <BaseballResult
+            baseballResult={baseballResult}
+            baseballMessage={baseballMessage}
+          />
         )}
       </Main>
     </Container>
