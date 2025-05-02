@@ -110,8 +110,8 @@ function App() {
         profileList = [
           inputValue,
           ...profileList.filter((item) => item !== inputValue),
-        ].slice(0, 6);
-        // 중복 방지(filter하고 ... 으로 배열 펼침) 및 최신값 맨 앞에 추가, 최근 6개만 저장
+        ].slice(0, 3);
+        // 중복 방지(filter하고 ... 으로 배열 펼침) 및 최신값 맨 앞에 추가, 최근 3개만 저장
         localStorage.setItem(PROFILE, JSON.stringify(profileList));
 
         // 변경상태 반영

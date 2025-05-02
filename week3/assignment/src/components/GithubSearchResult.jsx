@@ -24,6 +24,7 @@ const GithubSearchResult = ({ userInfo, onClose }) => {
             <ProfileName>{userInfo.data.name}</ProfileName>
           </ProfileLink>
           <ProfileNickname>{userInfo.data.login}</ProfileNickname>
+          <ProfileURL>{userInfo.data.html_url}</ProfileURL>
           <ProfileBio>
             {!userInfo.data.bio ? "한 줄 소개가 없습니다" : userInfo.data.bio}
           </ProfileBio>
@@ -88,8 +89,13 @@ const ProfileName = styled.p`
 
 const ProfileNickname = styled.p`
   color: #99abcc;
-  margin-bottom: 10px;
+  /* margin-bottom: 5px; */
 `;
+
+const ProfileURL = styled.p`
+    color: #99abcc;
+    margin-bottom: 10px;
+`
 
 const ProfileBio = styled.p`
   color: white;
