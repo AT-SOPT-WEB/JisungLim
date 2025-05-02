@@ -1,41 +1,29 @@
-import Card from './components/Card';
-import Header from './components/Header';
-import Search from './components/Search';
-import { members } from './member';
-import { useState } from 'react';
+import { useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  const [search, setSearch] = useState("");
+  let [count, setCount] = useState(0);
+  let [age, setAge] = useState(20);
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  }
+  const handleOnClick = () => {
+    setCount(count + 1);
+    console.log(count);
+  };
 
-  const filteredMembers = members.filter((member) => {
-    // return member.name === search;
-    return member.name.includes(search);
-  })
-
-  console.log(search);
+  useEffect(() => {
+    if (count != 0 && count < 3) {
+      setAge(age + 1);
+      console.log(age);
+    }
+  }, [count]);
 
   return (
-    <>
-      <Header />
-      <Search search={search} handleSearchChange={handleSearch} />
-      {/* 자식 컴포넌트인 Search에서 부모 컴포넌트의 값을 set할 수 있도록 handleSearch를 넘겨줌 */}
-      <section style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-        {
-          filteredMembers.map((member) => (
-            <Card 
-              key={member.id}
-              name={member.name}
-              github={member.github}
-              englishName={member.englishName}
-            />
-          ))
-        }
-      </section>
-    </>
+    <div>
+      <div>안녕하세요 전 {age}</div>
+      <button type="button" onClick={handleOnClick}>
+        누르면 한 살 더 먹음
+      </button>
+    </div>
   );
 }
 
