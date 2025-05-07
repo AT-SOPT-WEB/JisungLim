@@ -1,16 +1,15 @@
 import React from "react";
-import styled from "@emotion/styled";
+import "../src/shared/styles/global.css"
+import "../src/shared/styles/index.css"
+import SignUpPassword from "./pages/signup/SignUpPassword";
+import SignUpId from "./pages/signup/SignUpId";
 
 const App = () => {
   return (
-    <StyledDiv>
-      안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요
-    </StyledDiv>
+    <div>
+      <SignUpId />
+    </div>
   );
 };
 
 export default App;
-
-const StyledDiv = styled.div`
-  font-size: 2rem;
-`;

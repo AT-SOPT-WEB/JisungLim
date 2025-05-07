@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@layer components {
+  .form-input {
+    @apply w-[35rem] rounded-[1rem] border border-[#f2f2f2] px-[1.6rem] py-[1rem] text-[1.3rem];
+  }
+
+  .form-button {
+    @apply bg-green-400 w-[35rem] rounded-[1rem] border border-[#f2f2f2] px-[1.6rem] py-[1rem] text-[1.3rem]
+           hover:bg-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed;
+  }
+
+  .form-error {
+    @apply text-red-500 text-[1.2rem];
+  }
+
+  .form-title {
+    @apply text-[2.5rem] font-bold;
+  }
+}
