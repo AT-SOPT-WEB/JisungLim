@@ -22,7 +22,6 @@ const SignUp = () => {
   return (
     <div>
       <div className="form-wrapper">
-        <h1 className="form-title">회원가입</h1>
         {signUpStep === "id" && <SignUpId moveNext={moveToPassword} />}
         {signUpStep === "password" && (
           <SignUpPassword moveNext={moveToNickname} />

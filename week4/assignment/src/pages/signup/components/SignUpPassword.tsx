@@ -31,6 +31,7 @@ const SignUpPassword = ({ moveNext }: SignUpPasswordProps) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
+      <h1 className="form-title">회원가입</h1>
       <main className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}

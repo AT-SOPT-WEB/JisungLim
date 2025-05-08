@@ -29,6 +29,7 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
 
   return (
     <div className="form-wrapper">
+      <h1 className="form-title">회원가입</h1>
       <main className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}

@@ -2,7 +2,7 @@
 
 @layer components {
   .form-wrapper {
-    @apply flex flex-col justify-center items-center;
+    @apply flex flex-col h-screen justify-center items-center;
   }
 
   .form-input {

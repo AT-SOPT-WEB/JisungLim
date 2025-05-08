@@ -8,14 +8,17 @@ type SignInProps = {
 };
 
 const SignIn = () => {
-  const { register, handleSubmit } = useForm<SignInProps>({
+  const { register, handleSubmit, watch } = useForm<SignInProps>({
     mode: "onChange",
   });
 
   const onSubmit: SubmitHandler<SignInProps> = (data) => {
     console.log("폼 제출 성공!", data);
+    navigate("/mypage/info");
   };
 
+  const userId = watch("userId");
+  const userPassword = watch("userPassword");
   const navigate = useNavigate();
 
   const handleSignUp = () => {
@@ -47,7 +50,7 @@ const SignIn = () => {
             <button
               type="submit"
               className="form-button"
-              // onClick={}
+              disabled={!userId || !userPassword}
             >
               로그인
             </button>

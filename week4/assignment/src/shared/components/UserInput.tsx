@@ -6,6 +6,7 @@ import type {
 
 type InputProps = {
   registerName: string; // register(name)에 사용
+  label?: string;
   type?: string; // input 타입
   placeholder: string;
   register: UseFormRegister<any>;
@@ -15,6 +16,7 @@ type InputProps = {
 
 const UserInput = ({
   registerName,
+  label,
   type = "text",
   placeholder,
   register,
@@ -23,6 +25,7 @@ const UserInput = ({
 }: InputProps) => {
   return (
     <div className="flex flex-col items-start gap-1">
+        {label && <label className="text-[1.3rem]">{label}</label>}
       <input
         type={type}
         placeholder={placeholder}
