@@ -1,12 +1,21 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../../shared/components/userInput";
 import { useNavigate } from "react-router-dom";
+import { signUp, SignUp } from "../../../shared/apis/auth";
 
 type NicknameInputs = {
   userNickname: string;
 };
 
-const SignUpNickname = () => {
+type SignUpNicknameProps = {
+  signUpData: {
+    userId: string;
+    userPassword: string;
+    userNickname: string;
+  };
+};
+
+const SignUpNickname = ({ signUpData }: SignUpNicknameProps) => {
   const {
     register,
     handleSubmit,
@@ -19,9 +28,23 @@ const SignUpNickname = () => {
   const userNickname = watch("userNickname");
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<NicknameInputs> = (data) => {
+  const onSubmit: SubmitHandler<NicknameInputs> = async (data) => {
     console.log("폼 제출 성공!", data);
-    navigate("/login");
+
+    const finalData = {
+      ...signUpData,
+      userNickname: data.userNickname,
+    };
+    console.log(finalData);
+
+    try {
+      await signUp(finalData);
+      alert(`${data.userNickname}님, 환영합니다!`);
+    } catch {
+      alert("회원가입에 실패했습니다.");
+    } finally {
+      navigate("/login");
+    }
   };
 
   return (

@@ -3,6 +3,7 @@ import UserInput from "../../../shared/components/userInput";
 
 type SignUpPasswordProps = {
   moveNext: () => void;
+  onUserPasswordChange: (password: string) => void;
 };
 
 type PasswordInputs = {
@@ -11,7 +12,10 @@ type PasswordInputs = {
   confirmPassword: string;
 };
 
-const SignUpPassword = ({ moveNext }: SignUpPasswordProps) => {
+const SignUpPassword = ({
+  moveNext,
+  onUserPasswordChange,
+}: SignUpPasswordProps) => {
   const {
     register,
     handleSubmit,
@@ -27,6 +31,8 @@ const SignUpPassword = ({ moveNext }: SignUpPasswordProps) => {
 
   const onSubmit: SubmitHandler<PasswordInputs> = (data) => {
     console.log("폼 제출 성공!", data);
+    moveNext();
+    onUserPasswordChange(data.userPassword);
   };
 
   return (
@@ -75,7 +81,6 @@ const SignUpPassword = ({ moveNext }: SignUpPasswordProps) => {
               userPassword !== confirmPassword ||
               userPassword.length > 20
             }
-            onClick={moveNext}
           >
             다음
           </button>

@@ -3,6 +3,7 @@ import UserInput from "../../../shared/components/userInput";
 
 type SignUpIdProps = {
   moveNext: () => void;
+  onUserIdChange: (id: string) => void;
 };
 
 // useForm에 사용
@@ -10,7 +11,7 @@ type IdInputs = {
   userId: string;
 };
 
-const SignUpId = ({ moveNext }: SignUpIdProps) => {
+const SignUpId = ({ moveNext, onUserIdChange }: SignUpIdProps) => {
   const {
     register,
     handleSubmit,
@@ -24,6 +25,7 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
 
   const onSubmit: SubmitHandler<IdInputs> = (data) => {
     console.log("폼 제출 성공!", data);
+    onUserIdChange(data.userId);
     moveNext();
   };
 
