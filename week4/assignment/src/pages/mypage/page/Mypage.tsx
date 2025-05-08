@@ -24,7 +24,7 @@ const Mypage = () => {
       <Header nickname={nickname} />
 
       <main className="w-full h-full">
-        <Outlet />
+        <Outlet context={{ nickname, setNickname }}/>
       </main>
     </div>
   );

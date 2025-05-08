@@ -1,11 +1,15 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../../shared/components/userInput";
+import { useState } from "react";
+import { searchNickname } from "../../../shared/apis/user";
 
 type NicknameInputs = {
   userNickname: string;
 };
 
 const Search = () => {
+  const [searchResult, setSearchResult] = useState<string[]>([]);
+
   const {
     register,
     handleSubmit,
@@ -17,8 +21,18 @@ const Search = () => {
 
   const userNickname = watch("userNickname") ?? "";
 
-  const onSubmit: SubmitHandler<NicknameInputs> = (data) => {
+  const onSubmit: SubmitHandler<NicknameInputs> = async (data) => {
     console.log("폼 제출 성공!", data);
+    try {
+      const response = await searchNickname(data.userNickname);
+      if (response.nicknameList && response.nicknameList.length > 0) {
+        setSearchResult(response.nicknameList);
+      } else {
+        console.log("해당하는 닉네임이 없습니다.");
+      }
+    } catch {
+      console.log("닉네임 검색 요청 실패");
+    }
   };
 
   return (
@@ -46,8 +60,12 @@ const Search = () => {
             className="form-button"
             disabled={userNickname.length > 20}
           >
-            저장
+            확인
           </button>
+          {searchResult.length > 0 &&
+            searchResult.map((search, index) => (
+              <div key={index}>{search}</div>
+            ))}
         </form>
       </main>
     </div>
