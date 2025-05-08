@@ -1,7 +1,11 @@
 import { UserIcon } from "@heroicons/react/16/solid";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+type HeaderProps = {
+  nickname: string;
+};
+
+const Header = ({ nickname }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +24,7 @@ const Header = () => {
         <span>
           <UserIcon className="w-8 h-8 text-white" />
         </span>
-        &nbsp;JISUNG
+        &nbsp;{nickname}
       </button>
     </header>
   );

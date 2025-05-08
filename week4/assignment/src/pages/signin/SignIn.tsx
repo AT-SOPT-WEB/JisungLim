@@ -1,6 +1,8 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../shared/components/userInput";
 import { useNavigate } from "react-router-dom";
+import { signIn } from "../../shared/apis/auth";
+import { USER_ID_KEY } from "../../shared/constants/user";
 
 type SignInProps = {
   userId: string;
@@ -12,8 +14,28 @@ const SignIn = () => {
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<SignInProps> = (data) => {
+  const onSubmit: SubmitHandler<SignInProps> = async (data) => {
     console.log("폼 제출 성공!", data);
+    const signInData = {
+      loginId: data.userId,
+      password: data.userPassword,
+    };
+    try {
+      const response = await signIn(signInData);
+
+      if (response) {
+        alert("로그인 성공");
+        const userId = response.userId;
+        if (userId) {
+          localStorage.setItem(USER_ID_KEY, String(userId));
+        }
+        navigate("/mypage/info");
+      } else {
+        alert("로그인 실패");
+      }
+    } catch {
+      alert("서버 통신 실패");
+    }
     navigate("/mypage/info");
   };
 
@@ -43,6 +65,7 @@ const SignIn = () => {
 
             <UserInput
               registerName="userPassword"
+              type="password"
               placeholder="비밀번호"
               register={register}
             />
