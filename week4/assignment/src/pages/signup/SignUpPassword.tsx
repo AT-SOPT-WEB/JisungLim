@@ -1,13 +1,17 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../shared/components/userInput";
 
+type SignUpPasswordProps = {
+  moveNext: () => void;
+};
+
 type PasswordInputs = {
   // 공식문서에 interface가 아니라 type으로 돼있음!
   userPassword: string;
   confirmPassword: string;
 };
 
-const SignUpPassword = () => {
+const SignUpPassword = ({ moveNext }: SignUpPasswordProps) => {
   const {
     register,
     handleSubmit,
@@ -27,14 +31,12 @@ const SignUpPassword = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <p className="form-title">회원가입</p>
-
       <main className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-start gap-2"
         >
-          <p className="text-[1.6rem] mb-2">비밀번호</p>
+          <p className="form-label mb-2">비밀번호</p>
           <UserInput
             registerName="userPassword"
             type="password"
@@ -72,6 +74,7 @@ const SignUpPassword = () => {
               userPassword !== confirmPassword ||
               userPassword.length > 20
             }
+            onClick={moveNext}
           >
             다음
           </button>

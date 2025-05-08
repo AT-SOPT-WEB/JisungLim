@@ -5,8 +5,12 @@
     @apply w-[35rem] rounded-[1rem] border border-[#f2f2f2] px-[1.6rem] py-[1rem] text-[1.3rem];
   }
 
+  .form-label {
+    @apply text-[1.6rem] font-bold;
+  }
+
   .form-button {
-    @apply bg-green-400 w-[35rem] rounded-[1rem] border border-[#f2f2f2] px-[1.6rem] py-[1rem] text-[1.3rem]
+    @apply bg-green-400 w-[35rem] text-white rounded-[1rem] border border-[#f2f2f2] px-[1.6rem] py-[1rem] text-[1.3rem]
            hover:bg-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed;
   }
 

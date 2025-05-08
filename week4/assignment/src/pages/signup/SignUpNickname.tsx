@@ -1,30 +1,27 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../shared/components/userInput";
+import { useNavigate } from "react-router-dom";
 
-type SignUpIdProps = {
-  moveNext: () => void;
+type NicknameInputs = {
+  userNickname: string;
 };
 
-// useForm에 사용
-type IdInputs = {
-  userId: string;
-};
-
-const SignUpId = ({ moveNext }: SignUpIdProps) => {
+const SignUpNickname = () => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IdInputs>({
+  } = useForm<NicknameInputs>({
     mode: "onChange",
   });
 
-  const userId = watch("userId");
+  const userNickname = watch("userNickname");
+  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<IdInputs> = (data) => {
+  const onSubmit: SubmitHandler<NicknameInputs> = (data) => {
     console.log("폼 제출 성공!", data);
-    moveNext();
+    navigate("/login");
   };
 
   return (
@@ -34,14 +31,14 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-start gap-2"
         >
-          <p className="form-label mb-2">아이디</p>
+          <p className="form-label mb-2">닉네임</p>
           <UserInput
-            registerName="userId"
-            placeholder="아이디를 입력해주세요"
+            registerName="userNickname"
+            placeholder="닉네임를 입력해주세요"
             register={register}
-            error={errors.userId}
+            error={errors.userNickname}
             rules={{
-              required: "아이디를 입력해주세요.",
+              required: "닉네임을 입력해주세요.",
               maxLength: { value: 20, message: "20자 이하로 입력해주세요." },
             }}
           />
@@ -49,9 +46,9 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
           <button
             type="submit"
             className="form-button"
-            disabled={!userId || userId.length > 20}
+            disabled={!userNickname || userNickname.length > 20}
           >
-            다음
+            회원가입 하기
           </button>
         </form>
       </main>
@@ -59,4 +56,4 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
   );
 };
 
-export default SignUpId;
+export default SignUpNickname;
