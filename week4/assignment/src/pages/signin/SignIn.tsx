@@ -24,7 +24,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="form-wrapper">
         <h1 className="form-title">로그인</h1>
 
         <main className="mt-6">

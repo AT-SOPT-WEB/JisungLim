@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import UserInput from "../../shared/components/userInput";
+import UserInput from "../../../shared/components/userInput";
 
 type SignUpIdProps = {
   moveNext: () => void;
@@ -28,7 +28,7 @@ const SignUpId = ({ moveNext }: SignUpIdProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="form-wrapper">
       <main className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}

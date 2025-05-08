@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SignUpId from "./SignUpId";
-import SignUpPassword from "./SignUpPassword";
-import SignUpNickname from "./SignUpNickname";
+import SignUpId from "../components/SignUpId";
+import SignUpPassword from "../components/SignUpPassword";
+import SignUpNickname from "../components/SignUpNickname";
 import { useNavigate } from "react-router-dom";
 
 // 공식문서에서 interface보다 type 많이 사용
@@ -16,12 +16,12 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const handleSignIn = () => {
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
   return (
     <div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="form-wrapper">
         <h1 className="form-title">회원가입</h1>
         {signUpStep === "id" && <SignUpId moveNext={moveToPassword} />}
         {signUpStep === "password" && (

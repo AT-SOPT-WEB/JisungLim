@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import UserInput from "../../shared/components/userInput";
+import UserInput from "../../../shared/components/userInput";
 
 type SignUpPasswordProps = {
   moveNext: () => void;

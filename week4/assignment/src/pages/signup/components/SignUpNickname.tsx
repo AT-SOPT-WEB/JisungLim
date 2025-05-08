@@ -1,5 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import UserInput from "../../shared/components/userInput";
+import UserInput from "../../../shared/components/userInput";
 import { useNavigate } from "react-router-dom";
 
 type NicknameInputs = {
@@ -25,7 +25,7 @@ const SignUpNickname = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="form-wrapper">
       <main className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}
