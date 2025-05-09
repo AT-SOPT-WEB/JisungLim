@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UserInput from "../../../shared/components/userInput";
 import { useNavigate } from "react-router-dom";
-import { signUp, SignUp } from "../../../shared/apis/auth";
+import { signUp } from "../../../shared/apis/auth";
 
 type NicknameInputs = {
   userNickname: string;
@@ -40,10 +40,9 @@ const SignUpNickname = ({ signUpData }: SignUpNicknameProps) => {
     try {
       await signUp(finalData);
       alert(`${data.userNickname}님, 환영합니다!`);
+      navigate("/login");
     } catch {
       alert("회원가입에 실패했습니다.");
-    } finally {
-      navigate("/login");
     }
   };
 

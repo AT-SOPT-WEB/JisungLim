@@ -50,7 +50,6 @@ const Search = () => {
             register={register}
             error={errors.userNickname}
             rules={{
-              required: "닉네임을 입력해주세요.",
               maxLength: { value: 20, message: "20자 이하로 입력해주세요." },
             }}
           />

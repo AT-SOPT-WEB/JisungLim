@@ -29,7 +29,7 @@ const Info = () => {
     try {
       const response = await updateNickname(data.userNickname);
       if (response.success) {
-        console.log("닉네임 변경 완료");
+        alert(`${data.userNickname}로 변경 완료!`)
         setNickname(data.userNickname);
       } else {
         console.log("code: ", response.code);

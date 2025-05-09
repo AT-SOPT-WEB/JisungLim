@@ -36,7 +36,6 @@ const SignIn = () => {
     } catch {
       alert("서버 통신 실패");
     }
-    navigate("/mypage/info");
   };
 
   const userId = watch("userId");
