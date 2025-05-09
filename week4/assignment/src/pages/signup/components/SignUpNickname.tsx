@@ -47,7 +47,7 @@ const SignUpNickname = ({ signUpData }: SignUpNicknameProps) => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div>
       <h1 className="form-title">회원가입</h1>
       <main className="mt-6">
         <form

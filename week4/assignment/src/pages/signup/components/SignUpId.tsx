@@ -30,9 +30,9 @@ const SignUpId = ({ moveNext, onUserIdChange }: SignUpIdProps) => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div>
       <h1 className="form-title">회원가입</h1>
-      <main className="mt-6">
+      <div className="mt-6">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-start gap-2"
@@ -57,7 +57,7 @@ const SignUpId = ({ moveNext, onUserIdChange }: SignUpIdProps) => {
             다음
           </button>
         </form>
-      </main>
+      </div>
     </div>
   );
 };
